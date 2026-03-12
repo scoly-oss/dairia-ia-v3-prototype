@@ -223,10 +223,35 @@ export const DossiersListPage: React.FC = () => {
                   sx={{ fontWeight: 600, fontSize: '0.7rem' }}
                 />
               </Box>
+              {/* Employee name if available */}
+              {dossier.metadata?.employee_name && (
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
+                  👤 {dossier.metadata.employee_name}{dossier.metadata.position ? ` — ${dossier.metadata.position}` : ''}
+                </Typography>
+              )}
               {dossier.description && (
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5, lineClamp: 2, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                   {dossier.description}
                 </Typography>
+              )}
+              {/* Next action */}
+              {dossier.metadata?.next_action && (
+                <Box sx={{ mb: 1.5, p: 1.5, bgcolor: 'rgba(232, 132, 44, 0.06)', borderRadius: 2, borderLeft: '3px solid #e8842c' }}>
+                  <Typography variant="caption" sx={{ fontWeight: 700, color: '#e8842c', display: 'block', mb: 0.25 }}>
+                    Prochaine action
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: '0.8rem' }}>
+                    {dossier.metadata.next_action}
+                  </Typography>
+                  {dossier.metadata.next_deadline && (
+                    <Typography variant="caption" color="text.secondary">
+                      {(() => {
+                        const days = Math.ceil((new Date(dossier.metadata.next_deadline).getTime() - new Date('2026-03-12').getTime()) / 86400000);
+                        return days <= 0 ? '⚠️ Échéance dépassée' : days === 1 ? '⏰ Demain' : `📅 Dans ${days} jours`;
+                      })()}
+                    </Typography>
+                  )}
+                </Box>
               )}
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {dossier.type && (

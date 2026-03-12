@@ -316,25 +316,105 @@ export const DossierDetailPage: React.FC = () => {
       )}
 
       {tab === 1 && (
-        <DSCard noHover sx={{ p: 4, textAlign: 'center' }}>
-          <ChatIcon sx={{ fontSize: 48, color: 'text.disabled', mb: 2 }} />
-          <Typography variant="body2" color="text.secondary">
-            {dossier.conversations && dossier.conversations.length > 0
-              ? `${dossier.conversations.length} conversation(s) liée(s)`
-              : 'Aucune conversation liée. Liez des conversations depuis le chat.'}
-          </Typography>
-        </DSCard>
+        <Box>
+          {dossier.conversations && dossier.conversations.length > 0 ? (
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {dossier.conversations.map((conv: any) => (
+                <DSCard
+                  key={conv.id}
+                  sx={{ p: 2.5, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 2 }}
+                  onClick={() => navigate('/chat')}
+                >
+                  <Box
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: '10px',
+                      bgcolor: 'rgba(232, 132, 44, 0.1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <ChatIcon sx={{ color: 'primary.main', fontSize: 20 }} />
+                  </Box>
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                      {conv.title}
+                    </Typography>
+                    <Typography variant="caption" color="text.disabled">
+                      {new Date(conv.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </Typography>
+                  </Box>
+                  <Chip label="Ouvrir" size="small" variant="outlined" sx={{ fontSize: '0.7rem' }} />
+                </DSCard>
+              ))}
+            </Box>
+          ) : (
+            <DSCard noHover sx={{ p: 4, textAlign: 'center' }}>
+              <ChatIcon sx={{ fontSize: 48, color: 'text.disabled', mb: 2 }} />
+              <Typography variant="body2" color="text.secondary">
+                Aucune conversation liée. Liez des conversations depuis le chat.
+              </Typography>
+            </DSCard>
+          )}
+        </Box>
       )}
 
       {tab === 2 && (
-        <DSCard noHover sx={{ p: 4, textAlign: 'center' }}>
-          <DocIcon sx={{ fontSize: 48, color: 'text.disabled', mb: 2 }} />
-          <Typography variant="body2" color="text.secondary">
-            {dossier.documents && dossier.documents.length > 0
-              ? `${dossier.documents.length} document(s) lié(s)`
-              : 'Aucun document lié. Liez des documents depuis la page Documents.'}
-          </Typography>
-        </DSCard>
+        <Box>
+          {dossier.documents && dossier.documents.length > 0 ? (
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {dossier.documents.map((doc: any) => (
+                <DSCard
+                  key={doc.id}
+                  sx={{ p: 2.5, display: 'flex', alignItems: 'center', gap: 2 }}
+                >
+                  <Box
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: '10px',
+                      bgcolor: doc.name?.endsWith('.pdf') ? 'rgba(239, 68, 68, 0.1)' : doc.name?.endsWith('.docx') ? 'rgba(59, 130, 246, 0.1)' : 'rgba(100, 116, 139, 0.1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <DocIcon sx={{ color: doc.name?.endsWith('.pdf') ? '#ef4444' : doc.name?.endsWith('.docx') ? '#3b82f6' : '#64748b', fontSize: 20 }} />
+                  </Box>
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                      {doc.name}
+                    </Typography>
+                    <Typography variant="caption" color="text.disabled">
+                      Ajouté le {new Date(doc.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </Typography>
+                  </Box>
+                  <Chip
+                    label={doc.name?.split('.').pop()?.toUpperCase() || 'FICHIER'}
+                    size="small"
+                    sx={{
+                      fontSize: '0.65rem',
+                      fontWeight: 700,
+                      bgcolor: doc.name?.endsWith('.pdf') ? 'rgba(239, 68, 68, 0.1)' : doc.name?.endsWith('.docx') ? 'rgba(59, 130, 246, 0.1)' : 'rgba(100, 116, 139, 0.1)',
+                      color: doc.name?.endsWith('.pdf') ? '#ef4444' : doc.name?.endsWith('.docx') ? '#3b82f6' : '#64748b',
+                    }}
+                  />
+                </DSCard>
+              ))}
+            </Box>
+          ) : (
+            <DSCard noHover sx={{ p: 4, textAlign: 'center' }}>
+              <DocIcon sx={{ fontSize: 48, color: 'text.disabled', mb: 2 }} />
+              <Typography variant="body2" color="text.secondary">
+                Aucun document lié. Liez des documents depuis la page Documents.
+              </Typography>
+            </DSCard>
+          )}
+        </Box>
       )}
     </Box>
   );

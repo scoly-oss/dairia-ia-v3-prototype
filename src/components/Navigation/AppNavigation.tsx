@@ -33,6 +33,8 @@ import {
   Dashboard as DashboardIcon,
   FolderOpen as FolderIcon,
   NotificationsNone as AlertIcon,
+  Gavel as GavelIcon,
+  CalendarMonth as CalendarIcon,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -99,6 +101,9 @@ export const AppNavigation: React.FC<AppNavigationProps> = ({ paymentAlert }) =>
     { text: 'Dossiers', icon: <FolderIcon />, path: '/dossiers' },
     { text: 'Assistant IA', icon: <ChatIcon />, path: '/chat' },
     { text: 'Documents', icon: <DescriptionIcon />, path: '/documents' },
+    { text: 'Veille juridique', icon: <AlertIcon />, path: '/alerts' },
+    { text: 'Simulateur contentieux', icon: <GavelIcon />, path: '/litigation' },
+    { text: 'Échéancier RH', icon: <CalendarIcon />, path: '/calendar' },
     { text: 'Conversations', icon: <HistoryIcon />, path: '/chat/history' },
   ];
 

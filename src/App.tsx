@@ -39,6 +39,9 @@ import { DashboardPage } from './pages/Dashboard/DashboardPage';
 import { CompanyProfilePage } from './pages/CompanyProfile/CompanyProfilePage';
 import { DossiersListPage } from './pages/Dossiers/DossiersListPage';
 import { DossierDetailPage } from './pages/Dossiers/DossierDetailPage';
+import { AlertsPage } from './pages/Alerts/AlertsPage';
+import { LitigationPage } from './pages/Litigation/LitigationPage';
+import { CalendarPage } from './pages/Calendar/CalendarPage';
 
 import { getDesignTokens, tokens } from './theme/tokens';
 
@@ -299,6 +302,9 @@ const ThemedApp = () => {
                 <Route path="/company/profile" element={<PrivateRoute><CompanyProfilePage /></PrivateRoute>} />
                 <Route path="/dossiers" element={<PrivateRoute><DossiersListPage /></PrivateRoute>} />
                 <Route path="/dossiers/:id" element={<PrivateRoute><DossierDetailPage /></PrivateRoute>} />
+                <Route path="/alerts" element={<PrivateRoute><AlertsPage /></PrivateRoute>} />
+                <Route path="/litigation" element={<PrivateRoute><LitigationPage /></PrivateRoute>} />
+                <Route path="/calendar" element={<PrivateRoute><CalendarPage /></PrivateRoute>} />
                 <Route path="/subscription" element={<PrivateRoute><SubscriptionPage /></PrivateRoute>} />
 
                 {/* Lawyer and Admin routes */}
