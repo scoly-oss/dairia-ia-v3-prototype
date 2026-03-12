@@ -1,0 +1,7 @@
+<svg width="800" height="320" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dairia en bleu foncé #1C5F70 -->
+  <text x="20" y="220" font-family="Arial, sans-serif" font-size="180" font-weight="700" fill="#1C5F70">Dairia</text>
+
+  <!-- Ia en orange #F39C4F -->
+  <text x="570" y="220" font-family="Arial, sans-serif" font-size="180" font-weight="400" fill="#F39C4F">Ia</text>
+</svg>
