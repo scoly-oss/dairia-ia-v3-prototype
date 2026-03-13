@@ -35,7 +35,6 @@ import {
   NotificationsNone as AlertIcon,
   Gavel as GavelIcon,
   CalendarMonth as CalendarIcon,
-  AutoAwesome as ProposalIcon,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -105,7 +104,6 @@ export const AppNavigation: React.FC<AppNavigationProps> = ({ paymentAlert }) =>
     { text: 'Veille juridique', icon: <AlertIcon />, path: '/alerts' },
     { text: 'Simulateur contentieux', icon: <GavelIcon />, path: '/litigation' },
     { text: 'Échéancier RH', icon: <CalendarIcon />, path: '/calendar' },
-    { text: 'Propositions', icon: <ProposalIcon />, path: '/proposals' },
     { text: 'Conversations', icon: <HistoryIcon />, path: '/chat/history' },
   ];
 

@@ -42,7 +42,6 @@ import { DossierDetailPage } from './pages/Dossiers/DossierDetailPage';
 import { AlertsPage } from './pages/Alerts/AlertsPage';
 import { LitigationPage } from './pages/Litigation/LitigationPage';
 import { CalendarPage } from './pages/Calendar/CalendarPage';
-import ProposalsPage from './pages/Proposals/ProposalsPage';
 
 import { getDesignTokens, tokens } from './theme/tokens';
 
@@ -306,7 +305,6 @@ const ThemedApp = () => {
                 <Route path="/alerts" element={<PrivateRoute><AlertsPage /></PrivateRoute>} />
                 <Route path="/litigation" element={<PrivateRoute><LitigationPage /></PrivateRoute>} />
                 <Route path="/calendar" element={<PrivateRoute><CalendarPage /></PrivateRoute>} />
-                <Route path="/proposals" element={<PrivateRoute><ProposalsPage /></PrivateRoute>} />
                 <Route path="/subscription" element={<PrivateRoute><SubscriptionPage /></PrivateRoute>} />
 
                 {/* Lawyer and Admin routes */}
