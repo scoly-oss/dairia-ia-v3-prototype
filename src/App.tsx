@@ -277,7 +277,7 @@ const ThemedApp = () => {
       <CssBaseline />
       <AuthProvider>
         <LayoutProvider>
-          <Router>
+          <Router basename={import.meta.env.BASE_URL}>
             <NotificationPermission />
             <ChatProvider>
               <Routes>
